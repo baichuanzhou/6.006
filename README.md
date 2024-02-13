@@ -6,9 +6,9 @@ Fall 2011 version still uses Python2 to implement algorithms, in order to conver
 For example, to convert all `.py` files in ps1 to Python3,
 ```shell
 cd ps1
-python -m lib23 -w *.py
+python -m lib2to3 -w *.py
 ```
-And voila, now wec can execute those files using a Python3 interpreter!
+And voila, now we can execute those files using a Python3 interpreter!
 
 ## PS1
 TO BE ADDED
