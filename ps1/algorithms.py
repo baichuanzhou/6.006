@@ -5,6 +5,7 @@ import trace
 ################################## Algorithms ##################################
 ################################################################################
 
+
 def algorithm1(problem, trace = None):
     # if it's empty, we're done 
     if problem.numRow <= 0 or problem.numCol <= 0:
@@ -45,6 +46,7 @@ def algorithm1(problem, trace = None):
     result = algorithm1(sub, trace)
     return problem.getLocationInSelf(sub, result)
 
+
 def algorithm2(problem, location = (0, 0), trace = None):
     # if it's empty, we're done 
     if problem.numRow <= 0 or problem.numCol <= 0:
@@ -59,6 +61,7 @@ def algorithm2(problem, location = (0, 0), trace = None):
     else:
         # there is a better neighbor, so move to the neighbor and recurse
         return algorithm2(problem, nextLocation, trace)
+
 
 def algorithm3(problem, bestSeen = None, trace = None):
     # if it's empty, we're done 
@@ -94,11 +97,13 @@ def algorithm3(problem, bestSeen = None, trace = None):
     # update the best we've seen so far based on this new maximum
     if bestSeen is None or problem.get(neighbor) > problem.get(bestSeen):
         bestSeen = neighbor
-        if not trace is None: trace.setBestSeen(bestSeen)
+        if not trace is None:
+            trace.setBestSeen(bestSeen)
 
     # return if we can't see any better neighbors
     if neighbor == crossLoc:
-        if not trace is None: trace.foundPeak(crossLoc)
+        if not trace is None:
+            trace.foundPeak(crossLoc)
         return crossLoc
 
     # figure out which subproblem contains the largest number we've seen so
@@ -108,6 +113,7 @@ def algorithm3(problem, bestSeen = None, trace = None):
     if not trace is None: trace.setProblemDimensions(sub)
     result = algorithm3(sub, newBest, trace)
     return problem.getLocationInSelf(sub, result)
+
 
 def algorithm4(problem, bestSeen = None, rowSplit = True, trace = None):
     # if it's empty, we're done 
@@ -188,5 +194,5 @@ def crossProduct(list1, list2):
     answer = []
     for a in list1:
         for b in list2:
-            answer.append ((a, b))
+            answer.append((a, b))
     return answer
